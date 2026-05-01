@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   // අපි ලින්ක් එක කෑලි වලට කඩලා දාමු එතකොට characters අවුල් වෙන්නේ නැහැ
   const baseUrl = "https://bpcdn.dialog.lk/bpk-tv/Ch001/out/index.mpd";
-  const params = "?|drmScheme=widevine&drmLicense=https://api.viulk.xyz/api/api/license/?id=1&expires=1765395759";
+  const params = "?|drmScheme=widevine&drmLicense=https://api.viulk.xyz/api/api/license";
   const targetUrl = baseUrl + params;
 
   try {
