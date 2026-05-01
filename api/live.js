@@ -1,12 +1,14 @@
 export default async function handler(req, res) {
-  // අපි සාමාන්‍ය ලින්ක් එකක් ටෙස්ට් කරමු
-  const targetUrl = "https://www.google.com";
+  const targetUrl = "https://bpcdn.dialog.lk/bpk-tv/Ch001/out/index.mpd?|drmScheme=widevine&drmLicense=https://api.viulk.xyz/api/api/license/?id=1&expires=1765395759";
 
   try {
-    const response = await fetch(targetUrl);
-    const data = await response.text();
-    res.status(200).send("Proxy is Working! Content Length: " + data.length);
+    // අපි කෙලින්ම redirect කරලා බලමු, සමහර ප්ලේයර්ස් වලට මේකෙන් IP බ්ලොක් එක පනින්න පුළුවන්
+    res.writeHead(302, {
+      'Location': targetUrl,
+      'Access-Control-Allow-Origin': '*'
+    });
+    res.end();
   } catch (error) {
-    res.status(500).send("Vercel Connection Error: " + error.message);
+    res.status(500).send("Error: " + error.message);
   }
 }
